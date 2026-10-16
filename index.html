@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌱 Grupo 3 — Nossa Escola, Nossa Responsabilidade | Manoel 2A</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde:#00e676;
+    --verde-escuro:#00875a;
+    --azul:#00b4ff;
+    --amarelo:#ffd60a;
+    --laranja:#ff6b1a;
+    --roxo:#7b2ff7;
+    --fundo:#05121a;
+    --texto:#e8fff5;
+    --glass:rgba(255,255,255,.06);
+    --borda:rgba(0,230,118,.25);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Rajdhani',sans-serif;
+    background:var(--fundo);
+    color:var(--texto);
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(0,230,118,.18), transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(0,180,255,.15), transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(123,47,247,.10), transparent 60%);
+    animation:pulseBG 10s ease-in-out infinite alternate;
+  }
+  @keyframes pulseBG{from{opacity:.7;}to{opacity:1;}}
+  body::after{
+    content:'';position:fixed;inset:0;z-index:-1;opacity:.35;
+    background-image:
+      radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+      radial-gradient(1px 1px at 80px 90px, rgba(0,230,118,.9), transparent),
+      radial-gradient(1px 1px at 150px 40px, #fff, transparent),
+      radial-gradient(1px 1px at 220px 130px, rgba(0,180,255,.8), transparent);
+    background-size:280px 200px;
+    animation:estrelas 70s linear infinite;
+  }
+  @keyframes estrelas{from{background-position:0 0;}to{background-position:280px 200px;}}
+
+  /* HEADER */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:16px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+    backdrop-filter:blur(20px);
+    background:linear-gradient(180deg, rgba(5,18,26,.9), rgba(5,18,26,.3));
+    border-bottom:1px solid var(--borda);
+  }
+  .logo{
+    font-family:'Orbitron',sans-serif;font-weight:900;
+    font-size:1rem;letter-spacing:2px;color:#fff;
+    display:flex;align-items:center;gap:10px;
+  }
+  .logo .folha{
+    font-size:1.5rem;
+    filter:drop-shadow(0 0 12px var(--verde));
+    animation:flutua 3s ease-in-out infinite;
+  }
+  @keyframes flutua{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+  .logo span.grad{
+    background:linear-gradient(90deg, var(--verde), var(--azul), var(--amarelo));
+    background-size:200% auto;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradMove 4s linear infinite;
+  }
+  @keyframes gradMove{to{background-position:200% center;}}
+  .badge-grupo{
+    font-family:'Orbitron',sans-serif;
+    font-size:.7rem;letter-spacing:3px;
+    color:var(--verde);
+    padding:8px 20px;border-radius:50px;
+    background:rgba(0,230,118,.1);
+    border:1px solid var(--borda);
+    box-shadow:0 0 25px rgba(0,230,118,.3);
+    text-align:center;line-height:1.3;
+  }
+  .badge-grupo small{
+    display:block;font-size:.6rem;
+    color:#a8e8c8;letter-spacing:2px;
+    margin-top:2px;
+  }
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:130px 30px 80px;
+    position:relative;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;z-index:-1;opacity:.2;
+    background:url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1600&q=80') center/cover;
+    animation:zoomHero 20s ease-in-out infinite alternate;
+  }
+  @keyframes zoomHero{from{transform:scale(1);}to{transform:scale(1.15);}}
+
+  .hero .pre{
+    font-family:'Orbitron',sans-serif;
+    font-size:.85rem;letter-spacing:6px;
+    color:var(--verde);text-transform:uppercase;
+    margin-bottom:24px;font-weight:700;
+    animation:fadeUp 1s ease .2s both;
+  }
+  .hero h1{
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(2rem, 6vw, 4.5rem);
+    font-weight:900;line-height:1.1;
+    letter-spacing:-1px;margin-bottom:24px;
+    background:linear-gradient(120deg, #fff, var(--verde), var(--azul), var(--amarelo));
+    background-size:300% auto;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradMove 6s linear infinite, fadeUp 1s ease .4s both;
+    text-shadow:0 0 80px rgba(0,230,118,.4);
+  }
+  .hero p{
+    max-width:760px;font-size:clamp(1rem, 1.6vw, 1.3rem);
+    color:#a8e8c8;font-weight:400;
+    margin-bottom:40px;
+    animation:fadeUp 1s ease .6s both;
+  }
+  .hero-tags{
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:center;
+    animation:fadeUp 1s ease .8s both;
+  }
+  .hero-tags span{
+    padding:10px 22px;border-radius:50px;
+    background:rgba(0,230,118,.08);
+    border:1px solid var(--borda);
+    font-weight:600;font-size:.85rem;
+    letter-spacing:1px;color:#c9ffe5;
+    backdrop-filter:blur(10px);
+    transition:.3s;
+  }
+  .hero-tags span:hover{
+    background:rgba(0,230,118,.2);
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(0,230,118,.3);
+  }
+
+  /* CRÉDITOS DO AUTOR */
+  .creditos-autor{
+    margin-top:50px;
+    display:inline-flex;
+    align-items:center;gap:18px;
+    padding:18px 32px;
+    border-radius:60px;
+    background:linear-gradient(135deg, rgba(0,230,118,.15), rgba(0,180,255,.15));
+    border:1px solid var(--verde);
+    backdrop-filter:blur(16px);
+    box-shadow:0 0 50px rgba(0,230,118,.35);
+    animation:fadeUp 1s ease 1s both, pulsoCredito 3s ease-in-out infinite;
+    position:relative;overflow:hidden;
+  }
+  .creditos-autor::before{
+    content:'';position:absolute;inset:-2px;
+    background:conic-gradient(from 0deg, transparent, var(--verde), transparent 30%);
+    animation:gira 8s linear infinite;
+    z-index:-1;filter:blur(20px);opacity:.6;
+  }
+  @keyframes pulsoCredito{
+    0%,100%{box-shadow:0 0 50px rgba(0,230,118,.35);}
+    50%{box-shadow:0 0 80px rgba(0,230,118,.7);}
+  }
+  @keyframes gira{to{transform:rotate(360deg);}}
+  .creditos-autor .avatar{
+    width:52px;height:52px;border-radius:50%;
+    background:linear-gradient(135deg, var(--verde), var(--azul));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;font-size:1.4rem;color:#fff;
+    box-shadow:0 0 25px rgba(0,230,118,.7);
+    flex-shrink:0;
+  }
+  .creditos-autor .info{
+    text-align:left;
+  }
+  .creditos-autor .info .criado{
+    font-size:.7rem;
+    letter-spacing:4px;
+    color:var(--verde);
+    font-weight:700;
+    text-transform:uppercase;
+    margin-bottom:4px;
+  }
+  .creditos-autor .info .nome{
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+    font-size:1.15rem;
+    color:#fff;
+    letter-spacing:2px;
+    text-shadow:0 0 20px rgba(0,230,118,.6);
+  }
+  .creditos-autor .info .escola{
+    font-size:.8rem;
+    color:#a8e8c8;
+    font-weight:600;
+    letter-spacing:1px;
+    margin-top:3px;
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  /* SEÇÕES */
+  section{padding:100px 40px;max-width:1300px;margin:auto;}
+  .titulo-secao{text-align:center;margin-bottom:70px;}
+  .titulo-secao .num-cap{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:1.2rem;letter-spacing:6px;
+    color:var(--amarelo);margin-bottom:10px;
+  }
+  .titulo-secao h2{
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(1.6rem, 4vw, 3rem);
+    font-weight:900;letter-spacing:-1px;
+    line-height:1.15;margin-bottom:18px;
+    background:linear-gradient(135deg, #fff, var(--verde));
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .titulo-secao .linha{
+    width:140px;height:3px;margin:auto;
+    background:linear-gradient(90deg, transparent, var(--verde), transparent);
+    box-shadow:0 0 25px var(--verde);
+  }
+
+  /* CARDS DE AÇÃO */
+  .grid-acoes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:28px;
+  }
+  .acao{
+    position:relative;
+    padding:40px 30px;
+    border-radius:22px;
+    background:var(--glass);
+    border:1px solid var(--borda);
+    backdrop-filter:blur(16px);
+    overflow:hidden;
+    transition:.5s cubic-bezier(.2,.8,.3,1);
+    cursor:pointer;
+  }
+  .acao::before{
+    content:'';position:absolute;
+    top:0;left:0;right:0;height:4px;
+    background:var(--cor);
+    transform:scaleX(0);transform-origin:left;
+    transition:.5s;
+  }
+  .acao:hover::before{transform:scaleX(1);}
+  .acao:hover{
+    transform:translateY(-14px);
+    border-color:var(--cor);
+    box-shadow:0 30px 70px rgba(0,0,0,.5), 0 0 60px var(--cor-glow);
+  }
+  .acao .icone{
+    font-size:3.5rem;margin-bottom:20px;display:block;
+    filter:drop-shadow(0 0 20px var(--cor));
+    transition:.4s;
+  }
+  .acao:hover .icone{transform:scale(1.15) rotate(-6deg);}
+  .acao h3{
+    font-family:'Orbitron',sans-serif;
+    font-size:1.15rem;color:#fff;
+    margin-bottom:14px;letter-spacing:1px;
+  }
+  .acao p{color:#a8d4c0;font-size:.95rem;margin-bottom:16px;}
+  .acao .dica{
+    padding:12px 16px;border-radius:12px;
+    background:rgba(0,0,0,.3);
+    border-left:3px solid var(--cor);
+    font-size:.85rem;color:#c9ffe5;
+    font-style:italic;
+  }
+
+  /* ESTATÍSTICAS */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:24px;margin-top:60px;
+  }
+  .stat{
+    text-align:center;padding:34px 20px;
+    border-radius:20px;
+    background:var(--glass);
+    border:1px solid var(--borda);
+    backdrop-filter:blur(16px);
+    transition:.4s;
+  }
+  .stat:hover{transform:translateY(-8px);border-color:var(--verde);}
+  .stat .num{
+    font-family:'Orbitron',sans-serif;
+    font-size:3rem;font-weight:900;
+    background:linear-gradient(180deg, #fff, var(--verde));
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    line-height:1;margin-bottom:12px;
+    text-shadow:0 0 40px rgba(0,230,118,.5);
+  }
+  .stat .label{
+    font-size:.9rem;color:#a8d4c0;
+    font-weight:600;letter-spacing:1px;
+    text-transform:uppercase;
+  }
+
+  /* CALL TO ACTION FINAL */
+  .cta-final{
+    text-align:center;
+    padding:80px 40px;
+    border-radius:26px;
+    background:linear-gradient(135deg, rgba(0,230,118,.15), rgba(0,180,255,.15));
+    border:1px solid var(--verde);
+    backdrop-filter:blur(20px);
+    box-shadow:0 0 80px rgba(0,230,118,.25);
+    margin-top:40px;
+    position:relative;overflow:hidden;
+  }
+  .cta-final::before{
+    content:'';position:absolute;
+    inset:-2px;border-radius:26px;
+    background:conic-gradient(from 0deg, transparent, var(--verde), transparent 30%);
+    animation:gira 10s linear infinite;
+    z-index:-1;filter:blur(30px);opacity:.5;
+  }
+  .cta-final h2{
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(1.5rem, 3.5vw, 2.5rem);
+    font-weight:900;color:#fff;
+    margin-bottom:20px;letter-spacing:-.5px;
+  }
+  .cta-final h2 span{
+    background:linear-gradient(90deg, var(--verde), var(--amarelo));
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .cta-final p{
+    color:#c9ffe5;font-size:1.1rem;
+    max-width:700px;margin:0 auto 30px;
+  }
+  .cta-final .juramento{
+    display:inline-block;
+    padding:18px 40px;border-radius:50px;
+    background:linear-gradient(135deg, var(--verde-escuro), var(--verde));
+    color:#fff;font-weight:700;
+    font-family:'Orbitron',sans-serif;
+    letter-spacing:2px;font-size:.95rem;
+    box-shadow:0 0 40px rgba(0,230,118,.6);
+    animation:pulsoBtn 2.5s ease infinite;
+  }
+  @keyframes pulsoBtn{
+    0%,100%{transform:scale(1);box-shadow:0 0 40px rgba(0,230,118,.6);}
+    50%{transform:scale(1.04);box-shadow:0 0 70px rgba(0,230,118,.9);}
+  }
+
+  /* FOOTER */
+  footer{
+    padding:60px 40px 50px;
+    text-align:center;
+    border-top:1px solid var(--borda);
+    background:linear-gradient(180deg, transparent, rgba(0,230,118,.05));
+  }
+  footer .logo-foot{
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;font-size:1.1rem;
+    letter-spacing:3px;margin-bottom:20px;
+    background:linear-gradient(90deg, var(--verde), var(--azul));
+    background-size:200% auto;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradMove 4s linear infinite;
+  }
+  footer p{color:#7a9a8a;font-size:.85rem;margin-bottom:6px;}
+
+  /* CRÉDITOS FOOTER */
+  .creditos-footer{
+    display:inline-block;
+    margin:24px auto 20px;
+    padding:20px 36px;
+    border-radius:20px;
+    background:linear-gradient(135deg, rgba(0,230,118,.12), rgba(0,180,255,.12));
+    border:1px solid var(--verde);
+    box-shadow:0 0 40px rgba(0,230,118,.25);
+    max-width:600px;
+  }
+  .creditos-footer .tag-criado{
+    font-family:'Orbitron',sans-serif;
+    font-size:.7rem;letter-spacing:5px;
+    color:var(--verde);font-weight:700;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .creditos-footer .autor-final{
+    font-family:'Orbitron',sans-serif;
+    font-size:1.3rem;font-weight:900;
+    color:#fff;letter-spacing:3px;
+    margin-bottom:6px;
+    text-shadow:0 0 25px rgba(0,230,118,.7);
+  }
+  .creditos-footer .turma-final{
+    color:var(--amarelo);
+    font-size:1rem;font-weight:700;
+    letter-spacing:3px;
+    margin-bottom:6px;
+  }
+  .creditos-footer .escola-final{
+    color:#a8e8c8;
+    font-size:.9rem;
+    letter-spacing:1px;
+    font-weight:600;
+  }
+  .creditos-footer .escola-final strong{color:#fff;}
+
+  /* SCROLL REVEAL */
+  .reveal{opacity:0;transform:translateY(60px);transition:opacity .9s cubic-bezier(.2,.8,.3,1), transform .9s cubic-bezier(.2,.8,.3,1);}
+  .reveal.ativo{opacity:1;transform:translateY(0);}
+
+  /* PROGRESSO */
+  #progresso{
+    position:fixed;top:0;left:0;height:3px;width:0;
+    background:linear-gradient(90deg, var(--verde), var(--azul), var(--amarelo));
+    z-index:2000;
+    box-shadow:0 0 20px var(--verde);
+    transition:width .1s;
+  }
+
+  @media(max-width:700px){
+    header{padding:12px 18px;}
+    .logo{font-size:.75rem;}
+    .badge-grupo{font-size:.55rem;padding:6px 12px;letter-spacing:2px;}
+    .badge-grupo small{font-size:.5rem;}
+    section{padding:70px 22px;}
+    .creditos-autor{flex-direction:column;text-align:center;padding:22px;}
+    .creditos-autor .info{text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<div id="progresso"></div>
+
+<header>
+  <div class="logo">
+    <span class="folha">🌱</span>
+    <span class="grad">GRUPO 3</span>
+  </div>
+  <div class="badge-grupo">
+    NOSSA RESPONSABILIDADE
+    <small>por Manoel • 2A</small>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="pre">◆ Infográfico Educativo ◆</div>
+  <h1>NOSSA ESCOLA,<br>NOSSA RESPONSABILIDADE!</h1>
+  <p>Pequenas atitudes transformam o ambiente escolar. Descubra como você pode fazer parte dessa mudança e proteger o futuro do nosso planeta.</p>
+  <div class="hero-tags">
+    <span>🗑️ Descarte Correto</span>
+    <span>🌳 Áreas Verdes</span>
+    <span>💧 Água & Energia</span>
+    <span>🤝 Prevenção de Riscos</span>
+  </div>
+
+  <!-- CRÉDITOS DE AUTORIA NO HERO -->
+  <div class="creditos-autor">
+    <div class="avatar">M</div>
+    <div class="info">
+      <div class="criado">✦ Criado por ✦</div>
+      <div class="nome">MANOEL</div>
+      <div class="escola">Turma 2A • Escola Professor Pedro Carli</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1. DESCARTE CORRETO -->
+<section>
+  <div class="titulo-secao reveal">
+    <div class="num-cap">PILAR 01</div>
+    <h2>DESCARTE CORRETO DO LIXO</h2>
+    <div class="linha"></div>
+  </div>
+
+  <div class="grid-acoes">
+    <div class="acao reveal" style="--cor:#00e676;--cor-glow:rgba(0,230,118,.4);">
+      <span class="icone">♻️</span>
+      <h3>SEPARE O LIXO</h3>
+      <p>Use as lixeiras coloridas: <strong>Azul</strong> (papel), <strong>Vermelho</strong> (plástico), <strong>Verde</strong> (vidro), <strong>Amarelo</strong> (metal) e <strong>Marrom</strong> (orgânico).</p>
+      <div class="dica">💡 Dica: Cole etiquetas nas lixeiras da escola para todos acertarem!</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#00b4ff;--cor-glow:rgba(0,180,255,.4);">
+      <span class="icone">🚯</span>
+      <h3>NÃO JOGUE NO CHÃO</h3>
+      <p>Papel de bala, casca de fruta e embalagens devem ir para a lixeira. Lixo no chão entope bueiros e causa enchentes.</p>
+      <div class="dica">💡 Dica: Guarde o lixo no bolso até encontrar uma lixeira.</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#ffd60a;--cor-glow:rgba(255,214,10,.4);">
+      <span class="icone">🔋</span>
+      <h3>PILHAS E ELETRÔNICOS</h3>
+      <p>Pilhas, baterias e eletrônicos contêm metais tóxicos. Devem ser entregues em pontos de coleta especiais.</p>
+      <div class="dica">💡 Dica: Combine com a escola um "Dia do E-lixo" uma vez por semestre.</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#7b2ff7;--cor-glow:rgba(123,47,247,.4);">
+      <span class="icone">🌱</span>
+      <h3>COMPOSTEIRA</h3>
+      <p>Restos de comida viram adubo! Monte uma composteira na horta escolar e reduza o lixo orgânico.</p>
+      <div class="dica">💡 Dica: Use o adubo para as plantas da própria escola.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. ÁREAS VERDES -->
+<section>
+  <div class="titulo-secao reveal">
+    <div class="num-cap">PILAR 02</div>
+    <h2>PRESERVAÇÃO DAS ÁREAS VERDES</h2>
+    <div class="linha"></div>
+  </div>
+
+  <div class="grid-acoes">
+    <div class="acao reveal" style="--cor:#00e676;--cor-glow:rgba(0,230,118,.4);">
+      <span class="icone">🌳</span>
+      <h3>PLANTE E CUIDE</h3>
+      <p>Árvores e plantas refrescam o ar, dão sombra e abrigam pássaros. Plante uma muda na escola!</p>
+      <div class="dica">💡 Dica: Cada turma adota uma árvore e cuida dela o ano todo.</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#00b4ff;--cor-glow:rgba(0,180,255,.4);">
+      <span class="icone">🌸</span>
+      <h3>JARDIM ESCOLAR</h3>
+      <p>Um jardim bonito depende de cuidado coletivo. Regue, pode e mantenha o espaço limpo.</p>
+      <div class="dica">💡 Dica: Faça uma escala de regadores entre os alunos.</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#ffd60a;--cor-glow:rgba(255,214,10,.4);">
+      <span class="icone">🐦</span>
+      <h3>PROTEJA OS ANIMAIS</h3>
+      <p>Não jogue lixo nas áreas verdes. Isso machuca animais e contamina o solo.</p>
+      <div class="dica">💡 Dica: Construa comedouros para pássaros com material reciclado.</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#ff6b1a;--cor-glow:rgba(255,107,26,.4);">
+      <span class="icone">🔥</span>
+      <h3>NUNCA QUEIME</h3>
+      <p>Queimar lixo ou folhas causa incêndios, mata o solo e polui o ar. É crime ambiental.</p>
+      <div class="dica">💡 Dica: Descarte galhos em local adequado ou faça compostagem.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ÁGUA E ENERGIA -->
+<section>
+  <div class="titulo-secao reveal">
+    <div class="num-cap">PILAR 03</div>
+    <h2>USO RESPONSÁVEL DA ÁGUA E ENERGIA</h2>
+    <div class="linha"></div>
+  </div>
+
+  <div class="grid-acoes">
+    <div class="acao reveal" style="--cor:#00b4ff;--cor-glow:rgba(0,180,255,.4);">
+      <span class="icone">🚿</span>
+      <h3>TOME BANHOS CURTOS</h3>
+      <p>Um banho de 5 minutos economiza até 40 litros. Feche o chuveiro ao se ensaboar.</p>
+      <div class="dica">💡 Dica: Cronometre o banho com uma música de 5 minutos.</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#00e676;--cor-glow:rgba(0,230,118,.4);">
+      <span class="icone">🚰</span>
+      <h3>FECHE A TORNEIRA</h3>
+      <p>Ao escovar os dentes ou lavar as mãos, feche a torneira. Vazamento é prejuízo para todos.</p>
+      <div class="dica">💡 Dica: Comunidade escolar denuncia torneiras pingando.</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#ffd60a;--cor-glow:rgba(255,214,10,.4);">
+      <span class="icone">💡</span>
+      <h3>APAGUE AS LUZES</h3>
+      <p>Ao sair de uma sala, apague luzes e ventiladores. A natureza agradece e a conta cai.</p>
+      <div class="dica">💡 Dica: Cole avisos "Apague a luz!" perto dos interruptores.</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#7b2ff7;--cor-glow:rgba(123,47,247,.4);">
+      <span class="icone">🔌</span>
+      <h3>TIRE DA TOMADA</h3>
+      <p>Aparelhos no "stand-by" consomem energia o dia todo. Desligue da tomada ao terminar.</p>
+      <div class="dica">💡 Dica: Use réguas com interruptor para desligar tudo de uma vez.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PARTICIPAÇÃO DOS ESTUDANTES -->
+<section>
+  <div class="titulo-secao reveal">
+    <div class="num-cap">PILAR 04</div>
+    <h2>PARTICIPAÇÃO NA PREVENÇÃO DE RISCOS</h2>
+    <div class="linha"></div>
+  </div>
+
+  <div class="grid-acoes">
+    <div class="acao reveal" style="--cor:#ff2e4d;--cor-glow:rgba(255,46,77,.4);">
+      <span class="icone">👀</span>
+      <h3>OBSERVE E AVISE</h3>
+      <p>Rachaduras, fios soltos, lixo acumulado em bueiros? Avise um adulto ou a Defesa Civil (199).</p>
+      <div class="dica">💡 Dica: Crie uma "Patrulha da Prevenção" na escola.</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#00b4ff;--cor-glow:rgba(0,180,255,.4);">
+      <span class="icone">🚨</span>
+      <h3>PARTICIPE DE SIMULADOS</h3>
+      <p>Treinos de evacuação salvam vidas. Leve a sério e saiba as rotas de saída da escola.</p>
+      <div class="dica">💡 Dica: Decore o caminho de saída mais próximo da sua sala.</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#00e676;--cor-glow:rgba(0,230,118,.4);">
+      <span class="icone">📢</span>
+      <h3>ESPALHE A IDEIA</h3>
+      <p>Compartilhe o que aprendeu com a família e os amigos. Informação salva vidas.</p>
+      <div class="dica">💡 Dica: Crie cartazes e redes sociais para a escola.</div>
+    </div>
+
+    <div class="acao reveal" style="--cor:#ffd60a;--cor-glow:rgba(255,214,10,.4);">
+      <span class="icone">🤝</span>
+      <h3>TRABALHE EM GRUPO</h3>
+      <p>Juntos somos mais fortes. Monte comissões de meio ambiente e defesa civil na escola.</p>
+      <div class="dica">💡 Dica: Eleja representantes de cada turma para o comitê verde.</div>
+    </div>
+  </div>
+
+  <!-- ESTATÍSTICAS -->
+  <div class="stats">
+    <div class="stat reveal">
+      <div class="num" data-alvo="5">0</div>
+      <div class="label">min de banho<br>economiza 40L</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num" data-alvo="100">0</div>
+      <div class="label">litros por<br>torneira pingando/dia</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num" data-alvo="1000">0</div>
+      <div class="label">anos para o<br>plástico se decompor</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num" data-alvo="199">0</div>
+      <div class="label">telefone da<br>Defesa Civil</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section>
+  <div class="cta-final reveal">
+    <h2>A ESCOLA É NOSSA. <span>O FUTURO TAMBÉM.</span></h2>
+    <p>Cada atitude conta: uma torneira fechada, um lixo no lugar certo, uma árvore plantada, um alerta dado. Juntos, fazemos a diferença.</p>
+    <div class="juramento">🤝 EU ME COMPROMETO!</div>
+  </div>
+</section>
+
+<!-- FOOTER COM CRÉDITOS -->
+<footer>
+  <div class="logo-foot">GRUPO 3 — NOSSA ESCOLA, NOSSA RESPONSABILIDADE</div>
+
+  <div class="creditos-footer">
+    <div class="tag-criado">✦ Jogo Criado Por ✦</div>
+    <div class="autor-final">MANOEL</div>
+    <div class="turma-final">TURMA 2A</div>
+    <div class="escola-final">🏫 Escola <strong>Professor Pedro Carli</strong></div>
+  </div>
+
+  <p style="margin-top:20px;">Infográfico educativo sobre descarte correto, áreas verdes, uso responsável de água/energia e prevenção de riscos.</p>
+  <p>© 2025 — Todos os direitos reservados ao autor.</p>
+</footer>
+
+<script>
+  // Barra de progresso
+  const prog = document.getElementById('progresso');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (window.scrollY / h * 100) + '%';
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if(e.isIntersecting){
+        setTimeout(() => e.target.classList.add('ativo'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Contador animado nas estatísticas
+  const nums = document.querySelectorAll('.stat .num');
+  const obsNum = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const el = e.target;
+        const alvo = parseInt(el.dataset.alvo);
+        let atual = 0;
+        const passo = Math.max(1, Math.floor(alvo / 40));
+        const timer = setInterval(() => {
+          atual += passo;
+          if(atual >= alvo){ atual = alvo; clearInterval(timer); }
+          el.textContent = atual.toLocaleString('pt-BR');
+        }, 40);
+        obsNum.unobserve(el);
+      }
+    });
+  }, {threshold:0.5});
+  nums.forEach(n => obsNum.observe(n));
+
+  // Glow que segue o mouse
+  const glow = document.createElement('div');
+  glow.style.cssText = `position:fixed;width:500px;height:500px;border-radius:50%;
+    background:radial-gradient(circle, rgba(0,230,118,.08), transparent 70%);
+    pointer-events:none;z-index:1;transform:translate(-50%,-50%);
+    mix-blend-mode:screen;`;
+  document.body.appendChild(glow);
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+</script>
+
+</body>
+</html>
